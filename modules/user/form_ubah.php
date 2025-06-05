@@ -73,7 +73,7 @@ else {
               <option value="<?php echo $data['hak_akses']; ?>"><?php echo $data['hak_akses']; ?></option>
               <option disabled value="">-- Pilih --</option>
               <option value="Administrator">Administrator</option>
-              <option value="Admin Gudang">Admin Gudang</option>
+              <!-- <option value="Admin Gudang">Admin Gudang</option> -->
               <option value="Kepala Gudang">Kepala Gudang</option>
             </select>
             <div class="invalid-feedback">Hak akses tidak boleh kosong.</div>
