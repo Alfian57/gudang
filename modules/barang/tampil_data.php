@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -59,7 +59,7 @@ else {
             </div>';
     }
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-45">
       <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -114,7 +114,7 @@ else {
                                               FROM tbl_barang as a INNER JOIN tbl_satuan as b 
                                               ON a.satuan=b.id_satuan 
                                               ORDER BY a.id_barang DESC")
-                                              or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
               // ambil data hasil query
               while ($data = mysqli_fetch_assoc($query)) { ?>
                 <!-- tampilkan data -->
@@ -127,15 +127,22 @@ else {
                   <td width="100" class="text-center">
                     <div>
                       <!-- tombol detail data -->
-                      <a href="?module=tampil_detail_barang&id=<?php echo $data['id_barang']; ?>" class="btn btn-icon btn-round btn-primary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Detail">
+                      <a href="?module=tampil_detail_barang&id=<?php echo $data['id_barang']; ?>"
+                        class="btn btn-icon btn-round btn-primary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top"
+                        title="Detail">
                         <i class="fas fa-clone fa-sm"></i>
                       </a>
                       <!-- tombol ubah data -->
-                      <a href="?module=form_ubah_barang&id=<?php echo $data['id_barang']; ?>" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
+                      <a href="?module=form_ubah_barang&id=<?php echo $data['id_barang']; ?>"
+                        class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip"
+                        data-placement="top" title="Ubah">
                         <i class="fas fa-pencil-alt fa-sm"></i>
                       </a>
                       <!-- tombol hapus data -->
-                      <a href="modules/barang/proses_hapus.php?id=<?php echo $data['id_barang']; ?>" onclick="return confirm('Anda yakin ingin menghapus data barang <?php echo $data['nama_barang']; ?>?')" class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
+                      <a href="modules/barang/proses_hapus.php?id=<?php echo $data['id_barang']; ?>"
+                        onclick="return confirm('Anda yakin ingin menghapus data barang <?php echo $data['nama_barang']; ?>?')"
+                        class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Hapus">
                         <i class="fas fa-trash fa-sm"></i>
                       </a>
                     </div>

@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {

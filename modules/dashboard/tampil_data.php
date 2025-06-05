@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -23,7 +23,7 @@ else {
             </div>';
     }
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-5">
       <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -52,7 +52,7 @@ else {
                   <?php
                   // sql statement untuk menampilkan jumlah data pada tabel "tbl_barang"
                   $query = mysqli_query($mysqli, "SELECT * FROM tbl_barang")
-                                                  or die('Ada kesalahan pada query jumlah data barang : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query jumlah data barang : ' . mysqli_error($mysqli));
                   // ambil jumlah data dari hasil query
                   $jumlah_barang = mysqli_num_rows($query);
                   ?>
@@ -80,7 +80,7 @@ else {
                   <?php
                   // sql statement untuk menampilkan jumlah data pada tabel "tbl_barang_masuk"
                   $query = mysqli_query($mysqli, "SELECT * FROM tbl_barang_masuk")
-                                                  or die('Ada kesalahan pada query jumlah data barang masuk : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query jumlah data barang masuk : ' . mysqli_error($mysqli));
                   // ambil jumlah data dari hasil query
                   $jumlah_barang_masuk = mysqli_num_rows($query);
                   ?>
@@ -108,7 +108,7 @@ else {
                   <?php
                   // sql statement untuk menampilkan jumlah data pada tabel "tbl_barang_keluar"
                   $query = mysqli_query($mysqli, "SELECT * FROM tbl_barang_keluar")
-                                                  or die('Ada kesalahan pada query jumlah data barang keluar : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query jumlah data barang keluar : ' . mysqli_error($mysqli));
                   // ambil jumlah data dari hasil query
                   $jumlah_barang_keluar = mysqli_num_rows($query);
                   ?>
@@ -144,7 +144,7 @@ else {
                     <?php
                     // sql statement untuk menampilkan jumlah data pada tabel "tbl_jenis"
                     $query = mysqli_query($mysqli, "SELECT * FROM tbl_jenis")
-                                                    or die('Ada kesalahan pada query jumlah data jenis barang : ' . mysqli_error($mysqli));
+                      or die('Ada kesalahan pada query jumlah data jenis barang : ' . mysqli_error($mysqli));
                     // ambil jumlah data dari hasil query
                     $jumlah_jenis_barang = mysqli_num_rows($query);
                     ?>
@@ -172,7 +172,7 @@ else {
                     <?php
                     // sql statement untuk menampilkan jumlah data pada tabel "tbl_satuan"
                     $query = mysqli_query($mysqli, "SELECT * FROM tbl_satuan")
-                                                    or die('Ada kesalahan pada query jumlah data satuan : ' . mysqli_error($mysqli));
+                      or die('Ada kesalahan pada query jumlah data satuan : ' . mysqli_error($mysqli));
                     // ambil jumlah data dari hasil query
                     $jumlah_satuan = mysqli_num_rows($query);
                     ?>
@@ -200,7 +200,7 @@ else {
                     <?php
                     // sql statement untuk menampilkan jumlah data pada tabel "tbl_user"
                     $query = mysqli_query($mysqli, "SELECT * FROM tbl_user")
-                                                    or die('Ada kesalahan pada query jumlah data user : ' . mysqli_error($mysqli));
+                      or die('Ada kesalahan pada query jumlah data user : ' . mysqli_error($mysqli));
                     // ambil jumlah data dari hasil query
                     $jumlah_user = mysqli_num_rows($query);
                     ?>
@@ -216,7 +216,7 @@ else {
 
       <hr class="mt-1 pb-2">
     <?php } ?>
-    
+
     <!-- menampilkan informasi stok barang yang telah mencapai batas minimum -->
     <div class="card">
       <div class="card-header">
@@ -246,7 +246,7 @@ else {
                                               FROM tbl_barang as a INNER JOIN tbl_jenis as b INNER JOIN tbl_satuan as c 
                                               ON a.jenis=b.id_jenis AND a.satuan=c.id_satuan 
                                               WHERE a.stok<=a.stok_minimum ORDER BY a.id_barang ASC")
-                                              or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
               // ambil data hasil query
               while ($data = mysqli_fetch_assoc($query)) { ?>
                 <!-- tampilkan data -->
@@ -255,7 +255,8 @@ else {
                   <td width="80" class="text-center"><?php echo $data['id_barang']; ?></td>
                   <td width="200"><?php echo $data['nama_barang']; ?></td>
                   <td width="150"><?php echo $data['nama_jenis']; ?></td>
-                  <td width="70" class="text-right"><span class="badge badge-warning"><?php echo $data['stok']; ?></span></td>
+                  <td width="70" class="text-right"><span class="badge badge-warning"><?php echo $data['stok']; ?></span>
+                  </td>
                   <td width="70"><?php echo $data['nama_satuan']; ?></td>
                 </tr>
               <?php } ?>

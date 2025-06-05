@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -17,11 +17,11 @@ else {
                                     FROM tbl_barang as a INNER JOIN tbl_jenis as b INNER JOIN tbl_satuan as c 
                                     ON a.jenis=b.id_jenis AND a.satuan=c.id_satuan 
                                     WHERE a.id_barang='$id_barang'")
-                                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+      or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
     // ambil data hasil query
     $data = mysqli_fetch_assoc($query);
   }
-?>
+  ?>
   <!-- menampilkan pesan kesalahan unggah file -->
   <div id="pesan"></div>
 
@@ -49,18 +49,21 @@ else {
         <div class="card-title">Ubah Data Barang</div>
       </div>
       <!-- form ubah data -->
-      <form action="modules/barang/proses_ubah.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+      <form action="modules/barang/proses_ubah.php" method="post" enctype="multipart/form-data" class="needs-validation"
+        novalidate>
         <div class="card-body">
           <div class="row">
             <div class="col-md-7">
               <div class="form-group">
                 <label>ID Barang <span class="text-danger">*</span></label>
-                <input type="text" name="id_barang" class="form-control" value="<?php echo $data['id_barang']; ?>" readonly>
+                <input type="text" name="id_barang" class="form-control" value="<?php echo $data['id_barang']; ?>"
+                  readonly>
               </div>
 
               <div class="form-group">
                 <label>Nama Barang <span class="text-danger">*</span></label>
-                <input type="text" name="nama_barang" class="form-control" autocomplete="off" value="<?php echo $data['nama_barang']; ?>" required>
+                <input type="text" name="nama_barang" class="form-control" autocomplete="off"
+                  value="<?php echo $data['nama_barang']; ?>" required>
                 <div class="invalid-feedback">Nama barang tidak boleh kosong.</div>
               </div>
 
@@ -72,7 +75,7 @@ else {
                   <?php
                   // sql statement untuk menampilkan data dari tabel "tbl_jenis"
                   $query_jenis = mysqli_query($mysqli, "SELECT * FROM tbl_jenis ORDER BY nama_jenis ASC")
-                                                        or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                   // ambil data hasil query
                   while ($data_jenis = mysqli_fetch_assoc($query_jenis)) {
                     // tampilkan data
@@ -85,7 +88,9 @@ else {
 
               <div class="form-group">
                 <label>Stok Minimum <span class="text-danger">*</span></label>
-                <input type="text" name="stok_minimum" class="form-control" autocomplete="off" onKeyPress="return goodchars(event,'0123456789',this)" value="<?php echo $data['stok_minimum']; ?>" required>
+                <input type="text" name="stok_minimum" class="form-control" autocomplete="off"
+                  onKeyPress="return goodchars(event,'0123456789',this)" value="<?php echo $data['stok_minimum']; ?>"
+                  required>
                 <div class="invalid-feedback">Stok minimum tidak boleh kosong.</div>
               </div>
 
@@ -97,7 +102,7 @@ else {
                   <?php
                   // sql statement untuk menampilkan data dari tabel "tbl_satuan"
                   $query_satuan = mysqli_query($mysqli, "SELECT * FROM tbl_satuan ORDER BY nama_satuan ASC")
-                                                         or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                   // ambil data hasil query
                   while ($data_satuan = mysqli_fetch_assoc($query_satuan)) {
                     // tampilkan data
@@ -119,13 +124,15 @@ else {
                     // jika data "foto" tidak ada di database
                     if (is_null($data['foto'])) { ?>
                       <!-- tampilkan foto default -->
-                      <img style="max-height:200px" src="images/no_image.png" class="img-fluid foto-preview" alt="Foto Barang">
-                    <?php
+                      <img style="max-height:200px" src="images/no_image.png" class="img-fluid foto-preview"
+                        alt="Foto Barang">
+                      <?php
                     }
                     // jika data "foto" ada di database
                     else { ?>
                       <!-- tampilkan foto barang dari database -->
-                      <img style="max-height:200px" src="images/<?php echo $data['foto']; ?>" class="img-fluid foto-preview" alt="Foto Barang">
+                      <img style="max-height:200px" src="images/<?php echo $data['foto']; ?>" class="img-fluid foto-preview"
+                        alt="Foto Barang">
                     <?php } ?>
                   </div>
                 </div>
@@ -149,9 +156,9 @@ else {
   </div>
 
   <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
       // validasi file dan preview file sebelum diunggah
-      $('#foto').change(function() {
+      $('#foto').change(function () {
         // mengambil value dari file
         var filePath = $('#foto').val();
         var fileSize = $('#foto')[0].files[0].size;
@@ -187,7 +194,7 @@ else {
           if (fileInput.files && fileInput.files[0]) {
             var reader = new FileReader();
 
-            reader.onload = function(e) {
+            reader.onload = function (e) {
               // preview file
               $('.foto-preview').attr('src', e.target.result);
             };

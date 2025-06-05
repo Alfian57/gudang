@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -73,7 +73,7 @@ else {
             </div>';
     }
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-45">
       <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -126,7 +126,7 @@ else {
               $no = 1;
               // sql statement untuk menampilkan data dari tabel "tbl_jenis"
               $query = mysqli_query($mysqli, "SELECT * FROM tbl_jenis ORDER BY id_jenis DESC")
-                                              or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
               // ambil data hasil query
               while ($data = mysqli_fetch_assoc($query)) { ?>
                 <!-- tampilkan data -->
@@ -136,11 +136,16 @@ else {
                   <td width="70" class="text-center">
                     <div>
                       <!-- tombol ubah data -->
-                      <a href="?module=form_ubah_jenis&id=<?php echo $data['id_jenis']; ?>" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
+                      <a href="?module=form_ubah_jenis&id=<?php echo $data['id_jenis']; ?>"
+                        class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip"
+                        data-placement="top" title="Ubah">
                         <i class="fas fa-pencil-alt fa-sm"></i>
                       </a>
                       <!-- tombol hapus data -->
-                      <a href="modules/jenis/proses_hapus.php?id=<?php echo $data['id_jenis']; ?>" onclick="return confirm('Anda yakin ingin menghapus data jenis barang <?php echo $data['nama_jenis']; ?>?')" class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
+                      <a href="modules/jenis/proses_hapus.php?id=<?php echo $data['id_jenis']; ?>"
+                        onclick="return confirm('Anda yakin ingin menghapus data jenis barang <?php echo $data['nama_jenis']; ?>?')"
+                        class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Hapus">
                         <i class="fas fa-trash fa-sm"></i>
                       </a>
                     </div>

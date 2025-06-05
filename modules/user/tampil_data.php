@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -61,7 +61,7 @@ else {
             </div>';
     }
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-45">
       <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -112,7 +112,7 @@ else {
               $no = 1;
               // sql statement untuk menampilkan data dari tabel "tbl_user"
               $query = mysqli_query($mysqli, "SELECT id_user, nama_user, username, hak_akses FROM tbl_user ORDER BY id_user DESC")
-                                              or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
               // ambil data hasil query
               while ($data = mysqli_fetch_assoc($query)) { ?>
                 <!-- tampilkan data -->
@@ -124,11 +124,16 @@ else {
                   <td width="70" class="text-center">
                     <div>
                       <!-- tombol ubah data -->
-                      <a href="?module=form_ubah_user&id=<?php echo $data['id_user']; ?>" class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip" data-placement="top" title="Ubah">
+                      <a href="?module=form_ubah_user&id=<?php echo $data['id_user']; ?>"
+                        class="btn btn-icon btn-round btn-secondary btn-sm mr-md-1" data-toggle="tooltip"
+                        data-placement="top" title="Ubah">
                         <i class="fas fa-pencil-alt fa-sm"></i>
                       </a>
                       <!-- tombol hapus data -->
-                      <a href="modules/user/proses_hapus.php?id=<?php echo $data['id_user']; ?>" onclick="return confirm('Anda yakin ingin menghapus data user dengan username <?php echo $data['username']; ?>?')" class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
+                      <a href="modules/user/proses_hapus.php?id=<?php echo $data['id_user']; ?>"
+                        onclick="return confirm('Anda yakin ingin menghapus data user dengan username <?php echo $data['username']; ?>?')"
+                        class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Hapus">
                         <i class="fas fa-trash fa-sm"></i>
                       </a>
                     </div>

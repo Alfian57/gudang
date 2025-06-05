@@ -5,4 +5,4 @@ session_start();
 session_destroy();
 
 // alihkan ke halaman login dan tampilkan pesan berhasil logout
-header('location: login.php?pesan=3');
+header('location: /login.php?pesan=3');

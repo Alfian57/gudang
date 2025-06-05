@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else { ?>
@@ -43,7 +43,7 @@ else { ?>
                 // membuat "id_transaksi"
                 // sql statement untuk menampilkan 7 digit terakhir dari "id_transaksi" pada tabel "tbl_barang_keluar"
                 $query = mysqli_query($mysqli, "SELECT RIGHT(id_transaksi,7) as nomor FROM tbl_barang_keluar ORDER BY id_transaksi DESC LIMIT 1")
-                                                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                  or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                 // ambil jumlah baris data hasil query
                 $rows = mysqli_num_rows($query);
 
@@ -73,7 +73,8 @@ else { ?>
             <div class="col-md-5 ml-auto">
               <div class="form-group">
                 <label>Tanggal <span class="text-danger">*</span></label>
-                <input type="text" name="tanggal" class="form-control date-picker" autocomplete="off" value="<?php echo date("d-m-Y"); ?>" required>
+                <input type="text" name="tanggal" class="form-control date-picker" autocomplete="off"
+                  value="<?php echo date("d-m-Y"); ?>" required>
                 <div class="invalid-feedback">Tanggal tidak boleh kosong.</div>
               </div>
             </div>
@@ -90,7 +91,7 @@ else { ?>
                   <?php
                   // sql statement untuk menampilkan data dari tabel "tbl_barang"
                   $query_barang = mysqli_query($mysqli, "SELECT id_barang, nama_barang FROM tbl_barang ORDER BY id_barang ASC")
-                                                         or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                   // ambil data hasil query
                   while ($data_barang = mysqli_fetch_assoc($query_barang)) {
                     // tampilkan data
@@ -113,7 +114,8 @@ else { ?>
             <div class="col-md-5 ml-auto">
               <div class="form-group">
                 <label>Jumlah Keluar <span class="text-danger">*</span></label>
-                <input type="text" id="jumlah" name="jumlah" class="form-control" autocomplete="off" onKeyPress="return goodchars(event,'0123456789',this)" required>
+                <input type="text" id="jumlah" name="jumlah" class="form-control" autocomplete="off"
+                  onKeyPress="return goodchars(event,'0123456789',this)" required>
                 <div class="invalid-feedback">Jumlah keluar tidak boleh kosong.</div>
               </div>
 
@@ -135,18 +137,18 @@ else { ?>
   </div>
 
   <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
       // Menampilkan data barang dari select box ke textfield
-      $('#data_barang').change(function() {
+      $('#data_barang').change(function () {
         // mengambil value dari "id_barang"
         var id_barang = $('#data_barang').val();
 
         $.ajax({
           type: "GET",                                  // mengirim data dengan method GET 
           url: "modules/barang-keluar/get_barang.php",  // proses get data berdasarkan "id_barang"
-          data: {id_barang: id_barang},                 // data yang dikirim
+          data: { id_barang: id_barang },                 // data yang dikirim
           dataType: "JSON",                             // tipe data JSON
-          success: function(result) {                   // ketika proses get data selesai
+          success: function (result) {                   // ketika proses get data selesai
             // tampilkan data
             $('#data_stok').val(result.stok);
             $('#data_satuan').html('<span class="input-group-text">' + result.nama_satuan + '</span>');
@@ -157,7 +159,7 @@ else { ?>
       });
 
       // menghitung sisa stok
-      $('#jumlah').keyup(function() {
+      $('#jumlah').keyup(function () {
         // mengambil data dari form entri
         var stok = $('#data_stok').val();
         var jumlah = $('#jumlah').val();

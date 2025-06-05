@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else { ?>
@@ -65,14 +65,14 @@ else { ?>
         </div>
       </div>
     </div>
-  <?php
+    <?php
   }
   // jika ada data yang dikirim (tombol tampilkan diklik)
   else {
     // ambil data hasil submit dari form filter
-    $tanggal_awal  = $_POST['tanggal_awal'];
+    $tanggal_awal = $_POST['tanggal_awal'];
     $tanggal_akhir = $_POST['tanggal_akhir'];
-  ?>
+    ?>
     <div class="page-inner mt--5">
       <div class="card">
         <div class="card-header">
@@ -86,7 +86,8 @@ else { ?>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label>Tanggal Awal <span class="text-danger">*</span></label>
-                  <input type="text" name="tanggal_awal" class="form-control date-picker" autocomplete="off" value="<?php echo $tanggal_awal; ?>" required>
+                  <input type="text" name="tanggal_awal" class="form-control date-picker" autocomplete="off"
+                    value="<?php echo $tanggal_awal; ?>" required>
                   <div class="invalid-feedback">Tanggal awal tidak boleh kosong.</div>
                 </div>
               </div>
@@ -94,7 +95,8 @@ else { ?>
               <div class="col-lg-3">
                 <div class="form-group">
                   <label>Tanggal Akhir <span class="text-danger">*</span></label>
-                  <input type="text" name="tanggal_akhir" class="form-control date-picker" autocomplete="off" value="<?php echo $tanggal_akhir; ?>" required>
+                  <input type="text" name="tanggal_akhir" class="form-control date-picker" autocomplete="off"
+                    value="<?php echo $tanggal_akhir; ?>" required>
                   <div class="invalid-feedback">Tanggal akhir tidak boleh kosong.</div>
                 </div>
               </div>
@@ -109,7 +111,8 @@ else { ?>
               <div class="col-lg-2 pr-0">
                 <div class="form-group pt-3">
                   <!-- tombol cetak laporan -->
-                  <a href="modules/laporan-barang-masuk/cetak.php?tanggal_awal=<?php echo $tanggal_awal; ?>&tanggal_akhir=<?php echo $tanggal_akhir; ?>" target="_blank" class="btn btn-warning btn-round btn-block mt-4">
+                  <a href="modules/laporan-barang-masuk/cetak.php?tanggal_awal=<?php echo $tanggal_awal; ?>&tanggal_akhir=<?php echo $tanggal_akhir; ?>"
+                    target="_blank" class="btn btn-warning btn-round btn-block mt-4">
                     <span class="btn-label"><i class="fa fa-print mr-2"></i></span> Cetak
                   </a>
                 </div>
@@ -118,7 +121,8 @@ else { ?>
               <div class="col-lg-2 pl-0">
                 <div class="form-group pt-3">
                   <!-- tombol export laporan -->
-                  <a href="modules/laporan-barang-masuk/export.php?tanggal_awal=<?php echo $tanggal_awal; ?>&tanggal_akhir=<?php echo $tanggal_akhir; ?>" target="_blank" class="btn btn-success btn-round btn-block mt-4">
+                  <a href="modules/laporan-barang-masuk/export.php?tanggal_awal=<?php echo $tanggal_awal; ?>&tanggal_akhir=<?php echo $tanggal_akhir; ?>"
+                    target="_blank" class="btn btn-success btn-round btn-block mt-4">
                     <span class="btn-label"><i class="fa fa-file-excel mr-2"></i></span> Export
                   </a>
                 </div>
@@ -132,7 +136,8 @@ else { ?>
         <div class="card-header">
           <!-- judul tabel -->
           <div class="card-title">
-            <i class="fas fa-file-alt mr-2"></i> Laporan Data Barang Masuk Tanggal <strong><?php echo $tanggal_awal; ?></strong> s.d. <strong><?php echo $tanggal_akhir; ?></strong>
+            <i class="fas fa-file-alt mr-2"></i> Laporan Data Barang Masuk Tanggal
+            <strong><?php echo $tanggal_awal; ?></strong> s.d. <strong><?php echo $tanggal_akhir; ?></strong>
           </div>
         </div>
         <div class="card-body">
@@ -152,7 +157,7 @@ else { ?>
               <tbody>
                 <?php
                 // ubah format tanggal menjadi Tahun-Bulan-Hari (Y-m-d)
-                $tanggal_awal  = date('Y-m-d', strtotime($tanggal_awal));
+                $tanggal_awal = date('Y-m-d', strtotime($tanggal_awal));
                 $tanggal_akhir = date('Y-m-d', strtotime($tanggal_akhir));
 
                 // variabel untuk nomor urut tabel
@@ -163,7 +168,7 @@ else { ?>
                                                 FROM tbl_barang_masuk as a INNER JOIN tbl_barang as b INNER JOIN tbl_satuan as c 
                                                 ON a.barang=b.id_barang AND b.satuan=c.id_satuan 
                                                 WHERE a.tanggal BETWEEN '$tanggal_awal' AND '$tanggal_akhir' ORDER BY a.id_transaksi ASC")
-                                                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                  or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                 // ambil data hasil query
                 while ($data = mysqli_fetch_assoc($query)) { ?>
                   <!-- tampilkan data -->
@@ -181,7 +186,7 @@ else { ?>
           </div>
         </div>
       </div>
-  <?php
+      <?php
   }
 }
 ?>

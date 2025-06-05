@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -14,11 +14,11 @@ else {
 
     // sql statement untuk menampilkan data dari tabel "tbl_jenis" berdasarkan "id_jenis"
     $query = mysqli_query($mysqli, "SELECT * FROM tbl_jenis WHERE id_jenis='$id_jenis'")
-                                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+      or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
     // ambil data hasil query
     $data = mysqli_fetch_assoc($query);
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-4">
       <div class="page-header text-white">
@@ -49,7 +49,8 @@ else {
 
           <div class="form-group">
             <label>Jenis Barang <span class="text-danger">*</span></label>
-            <input type="text" name="nama_jenis" class="form-control col-lg-5" autocomplete="off" value="<?php echo $data['nama_jenis']; ?>" required>
+            <input type="text" name="nama_jenis" class="form-control col-lg-5" autocomplete="off"
+              value="<?php echo $data['nama_jenis']; ?>" required>
             <div class="invalid-feedback">Jenis barang tidak boleh kosong.</div>
           </div>
         </div>

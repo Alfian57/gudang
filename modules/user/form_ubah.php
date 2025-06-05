@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -14,11 +14,11 @@ else {
 
     // sql statement untuk menampilkan data dari tabel "tbl_user" berdasarkan "id_user"
     $query = mysqli_query($mysqli, "SELECT id_user, nama_user, username, hak_akses FROM tbl_user WHERE id_user='$id_user'")
-                                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+      or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
     // ambil data hasil query
     $data = mysqli_fetch_assoc($query);
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-4">
       <div class="page-header text-white">
@@ -49,19 +49,22 @@ else {
 
           <div class="form-group col-lg-5">
             <label>Nama User <span class="text-danger">*</span></label>
-            <input type="text" name="nama_user" class="form-control" autocomplete="off" value="<?php echo $data['nama_user']; ?>" required>
+            <input type="text" name="nama_user" class="form-control" autocomplete="off"
+              value="<?php echo $data['nama_user']; ?>" required>
             <div class="invalid-feedback">Nama user tidak boleh kosong.</div>
           </div>
 
           <div class="form-group col-lg-5">
             <label>Username <span class="text-danger">*</span></label>
-            <input type="text" name="username" class="form-control" autocomplete="off" value="<?php echo $data['username']; ?>" required>
+            <input type="text" name="username" class="form-control" autocomplete="off"
+              value="<?php echo $data['username']; ?>" required>
             <div class="invalid-feedback">Username tidak boleh kosong.</div>
           </div>
 
           <div class="form-group col-lg-5">
             <label>Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Kosongkan password jika tidak diubah" autocomplete="off">
+            <input type="password" name="password" class="form-control" placeholder="Kosongkan password jika tidak diubah"
+              autocomplete="off">
           </div>
 
           <div class="form-group col-lg-5">

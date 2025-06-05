@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -19,7 +19,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu dashboard tidak aktif
     else { ?>
@@ -29,7 +29,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu data barang (tampil data / tampil detail / form entri / form ubah) dipilih, menu data barang aktif
@@ -68,7 +68,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika menu jenis barang (tampil data / form entri / form ubah) dipilih, menu jenis barang aktif
     elseif ($_GET['module'] == 'jenis' || $_GET['module'] == 'form_entri_jenis' || $_GET['module'] == 'form_ubah_jenis') { ?>
@@ -106,7 +106,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika menu satuan (tampil data / form entri / form ubah) dipilih, menu satuan aktif
     elseif ($_GET['module'] == 'satuan' || $_GET['module'] == 'form_entri_satuan' || $_GET['module'] == 'form_ubah_satuan') { ?>
@@ -144,7 +144,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang tidak aktif
     else { ?>
@@ -182,7 +182,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu barang masuk (tampil data / form entri) dipilih, menu barang masuk aktif
@@ -200,7 +200,7 @@ else {
           <p>Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang masuk tidak aktif
     else { ?>
@@ -217,7 +217,7 @@ else {
           <p>Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu barang keluar (tampil data / form entri) dipilih, menu barang keluar aktif
@@ -228,7 +228,7 @@ else {
           <p>Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang keluar tidak aktif
     else { ?>
@@ -238,7 +238,7 @@ else {
           <p>Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan stok dipilih, menu laporan stok aktif
@@ -256,7 +256,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan stok tidak aktif
     else { ?>
@@ -273,7 +273,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang masuk dipilih, menu laporan barang masuk aktif
@@ -284,7 +284,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang masuk tidak aktif
     else { ?>
@@ -294,7 +294,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang keluar dipilih, menu laporan barang keluar aktif
@@ -305,7 +305,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang keluar tidak aktif
     else { ?>
@@ -315,7 +315,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu manajemen user (tampil data / form entri / form ubah) dipilih, menu manajemen user aktif
@@ -333,7 +333,7 @@ else {
           <p>Manajemen User</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu manajemen user tidak aktif
     else { ?>
@@ -350,7 +350,7 @@ else {
           <p>Manajemen User</p>
         </a>
       </li>
-    <?php
+      <?php
     }
   }
   // jika hak akses = Admin Gudang, tampilkan menu
@@ -364,7 +364,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu dashboard tidak aktif
     else { ?>
@@ -374,7 +374,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu data barang (tampil data / tampil detail / form entri / form ubah) dipilih, menu data barang aktif
@@ -413,7 +413,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika menu jenis barang (tampil data / form entri / form ubah) dipilih, menu jenis barang aktif
     elseif ($_GET['module'] == 'jenis' || $_GET['module'] == 'form_entri_jenis' || $_GET['module'] == 'form_ubah_jenis') { ?>
@@ -451,7 +451,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika menu satuan (tampil data / form entri / form ubah) dipilih, menu satuan aktif
     elseif ($_GET['module'] == 'satuan' || $_GET['module'] == 'form_entri_satuan' || $_GET['module'] == 'form_ubah_satuan') { ?>
@@ -489,7 +489,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang tidak aktif
     else { ?>
@@ -527,7 +527,7 @@ else {
           </ul>
         </div>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu barang masuk (tampil data / form entri) dipilih, menu barang masuk aktif
@@ -545,7 +545,7 @@ else {
           <p>Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang masuk tidak aktif
     else { ?>
@@ -562,7 +562,7 @@ else {
           <p>Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu barang keluar (tampil data / form entri) dipilih, menu barang keluar aktif
@@ -573,7 +573,7 @@ else {
           <p>Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu barang keluar tidak aktif
     else { ?>
@@ -583,7 +583,7 @@ else {
           <p>Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan stok dipilih, menu laporan stok aktif
@@ -601,7 +601,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan stok tidak aktif
     else { ?>
@@ -618,7 +618,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang masuk dipilih, menu laporan barang masuk aktif
@@ -629,7 +629,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang masuk tidak aktif
     else { ?>
@@ -639,7 +639,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang keluar dipilih, menu laporan barang keluar aktif
@@ -650,7 +650,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang keluar tidak aktif
     else { ?>
@@ -660,7 +660,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
   }
   // jika hak akses = Kepala Gudang, tampilkan menu
@@ -674,7 +674,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu dashboard tidak aktif
     else { ?>
@@ -684,7 +684,7 @@ else {
           <p>Dashboard</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan stok dipilih, menu laporan stok aktif
@@ -702,7 +702,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan stok tidak aktif
     else { ?>
@@ -719,7 +719,7 @@ else {
           <p>Laporan Stok</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang masuk dipilih, menu laporan barang masuk aktif
@@ -730,7 +730,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang masuk tidak aktif
     else { ?>
@@ -740,7 +740,7 @@ else {
           <p>Laporan Barang Masuk</p>
         </a>
       </li>
-    <?php
+      <?php
     }
 
     // jika menu laporan barang keluar dipilih, menu laporan barang keluar aktif
@@ -751,7 +751,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-    <?php
+      <?php
     }
     // jika tidak dipilih, menu laporan barang keluar tidak aktif
     else { ?>
@@ -761,7 +761,7 @@ else {
           <p>Laporan Barang Keluar</p>
         </a>
       </li>
-<?php
+      <?php
     }
   }
 }

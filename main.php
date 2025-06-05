@@ -5,7 +5,7 @@ session_start();      // mengaktifkan session
 // jika user belum login
 if (empty($_SESSION['username']) && empty($_SESSION['password'])) {
   // alihkan ke halaman login dan tampilkan pesan peringatan login
-  header('location: login.php?pesan=2');
+  header('location: /login.php?pesan=2');
 }
 // jika user sudah login, tampilkan halaman konten
 else { ?>

@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else { ?>
@@ -61,13 +61,13 @@ else { ?>
         </div>
       </div>
     </div>
-  <?php
+    <?php
   }
   // jika ada data yang dikirim (tombol tampilkan diklik)
   else {
     // ambil data hasil submit dari form filter
     $stok = $_POST['stok'];
-  ?>
+    ?>
     <div class="page-inner mt--5">
       <div class="card">
         <div class="card-header">
@@ -101,7 +101,8 @@ else { ?>
               <div class="col-lg-2 pr-0">
                 <div class="form-group pt-3">
                   <!-- tombol cetak laporan -->
-                  <a href="modules/laporan-stok/cetak.php?stok=<?php echo $stok; ?>" target="_blank" class="btn btn-warning btn-round btn-block mt-4">
+                  <a href="modules/laporan-stok/cetak.php?stok=<?php echo $stok; ?>" target="_blank"
+                    class="btn btn-warning btn-round btn-block mt-4">
                     <span class="btn-label"><i class="fa fa-print mr-2"></i></span> Cetak
                   </a>
                 </div>
@@ -110,7 +111,8 @@ else { ?>
               <div class="col-lg-2 pl-0">
                 <div class="form-group pt-3">
                   <!-- tombol export laporan -->
-                  <a href="modules/laporan-stok/export.php?stok=<?php echo $stok; ?>" target="_blank" class="btn btn-success btn-round btn-block mt-4">
+                  <a href="modules/laporan-stok/export.php?stok=<?php echo $stok; ?>" target="_blank"
+                    class="btn btn-success btn-round btn-block mt-4">
                     <span class="btn-label"><i class="fa fa-file-excel mr-2"></i></span> Export
                   </a>
                 </div>
@@ -153,7 +155,7 @@ else { ?>
                                                   FROM tbl_barang as a INNER JOIN tbl_jenis as b INNER JOIN tbl_satuan as c 
                                                   ON a.jenis=b.id_jenis AND a.satuan=c.id_satuan 
                                                   ORDER BY a.id_barang ASC")
-                                                  or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                   // ambil data hasil query
                   while ($data = mysqli_fetch_assoc($query)) { ?>
                     <!-- tampilkan data -->
@@ -167,7 +169,8 @@ else { ?>
                       // jika data stok minim
                       if ($data['stok'] <= $data['stok_minimum']) { ?>
                         <!-- tampilkan data dengan warna background -->
-                        <td width="70" class="text-right"><span class="badge badge-warning"><?php echo $data['stok']; ?></span></td>
+                        <td width="70" class="text-right"><span class="badge badge-warning"><?php echo $data['stok']; ?></span>
+                        </td>
                       <?php }
                       // jika data stok tidak minim
                       else { ?>
@@ -181,7 +184,7 @@ else { ?>
               </table>
             </div>
           </div>
-        <?php
+          <?php
         }
         // jika filter data stok "Minimum" dipilih
         else { ?>
@@ -213,7 +216,7 @@ else { ?>
                                                   FROM tbl_barang as a INNER JOIN tbl_jenis as b INNER JOIN tbl_satuan as c 
                                                   ON a.jenis=b.id_jenis AND a.satuan=c.id_satuan 
                                                   WHERE a.stok<=a.stok_minimum ORDER BY a.id_barang ASC")
-                                                  or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                    or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
                   // ambil data hasil query
                   while ($data = mysqli_fetch_assoc($query)) { ?>
                     <!-- tampilkan data -->
@@ -233,7 +236,7 @@ else { ?>
         <?php } ?>
       </div>
     </div>
-<?php
+    <?php
   }
 }
 ?>

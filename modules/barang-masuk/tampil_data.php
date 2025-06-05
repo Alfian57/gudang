@@ -3,7 +3,7 @@
 // jika file diakses secara langsung
 if (basename($_SERVER['PHP_SELF']) === basename(__FILE__)) {
   // alihkan ke halaman error 404
-  header('location: 404.html');
+  header('location: /404.html');
 }
 // jika file di include oleh file lain, tampilkan isi file
 else {
@@ -35,7 +35,7 @@ else {
             </div>';
     }
   }
-?>
+  ?>
   <div class="panel-header bg-secondary-gradient">
     <div class="page-inner py-45">
       <div class="d-flex align-items-left align-items-md-top flex-column flex-md-row">
@@ -91,7 +91,7 @@ else {
                                               FROM tbl_barang_masuk as a INNER JOIN tbl_barang as b INNER JOIN tbl_satuan as c
                                               ON a.barang=b.id_barang AND b.satuan=c.id_satuan 
                                               ORDER BY a.id_transaksi DESC")
-                                              or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
+                or die('Ada kesalahan pada query tampil data : ' . mysqli_error($mysqli));
               // ambil data hasil query
               while ($data = mysqli_fetch_assoc($query)) { ?>
                 <!-- tampilkan data -->
@@ -105,7 +105,10 @@ else {
                   <td width="50" class="text-center">
                     <div>
                       <!-- tombol hapus data -->
-                      <a href="modules/barang-masuk/proses_hapus.php?id=<?php echo $data['id_transaksi']; ?>" onclick="return confirm('Anda yakin ingin menghapus data barang masuk <?php echo $data['id_transaksi']; ?>?')" class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Hapus">
+                      <a href="modules/barang-masuk/proses_hapus.php?id=<?php echo $data['id_transaksi']; ?>"
+                        onclick="return confirm('Anda yakin ingin menghapus data barang masuk <?php echo $data['id_transaksi']; ?>?')"
+                        class="btn btn-icon btn-round btn-danger btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="Hapus">
                         <i class="fas fa-trash fa-sm"></i>
                       </a>
                     </div>
