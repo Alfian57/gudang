@@ -1,16 +1,12 @@
 <?php
-// deklarasi parameter koneksi database
-$host = "127.0.0.1";            // server database, default “localhost” atau “127.0.0.1”
-$username = "root";                 // username database, default “root”
-$password = "root";                     // password database, default kosong
-$database = "gudang"; // memilih database yang akan digunakan
 
-// buat koneksi database
+$host = "127.0.0.1";
+$username = "root";
+$password = "root";
+$database = "gudang";
+
 $mysqli = mysqli_connect($host, $username, $password, $database);
 
-// cek koneksi
-// jika koneksi gagal 
 if (!$mysqli) {
-  // tampilkan pesan gagal koneksi
   die('Koneksi Database Gagal : ' . mysqli_connect_error());
 }
